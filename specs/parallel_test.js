@@ -23,8 +23,7 @@ parallel('Tests ', function() {
     it('can find search results', function (done) {
       buildDriver(caps).then(function(driver) {
         driver.get('http://www.google.com/ncr').then(function() {
-          driver.findElement(webdriver.By.name('q')).sendKeys('BrowserStack').then(function() {
-            driver.findElement(webdriver.By.name('btnG')).click().then(function() {
+          driver.findElement(webdriver.By.name('q')).sendKeys('BrowserStack'+ webdriver.Key.ENTER).then(function() {
               driver.getTitle().then(function(title) {
                 setTimeout(function() {
                   assert(title.match(/BrowserStack - Google Search/i) != null);
@@ -33,7 +32,6 @@ parallel('Tests ', function() {
                   });
                 }, 5000);
               });
-            });
           });
         });
       });
