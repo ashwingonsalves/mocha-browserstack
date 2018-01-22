@@ -22,7 +22,8 @@ describe('Google\'s Search Functionality for ' + caps.browserName, function() {
 
   it('can find search results', function (done) {
     driver.get('http://www.google.com/ncr').then(function() {
-      driver.findElement(webdriver.By.name('q')).sendKeys('BrowserStack'+ webdriver.Key.ENTER).then(function() {
+      driver.findElement(webdriver.By.name('q')).sendKeys('BrowserStack')
+      driver.findElement(webdriver.By.name('q')).submit().then(function() {
           driver.getTitle().then(function(title) {
             assert(title.match(/BrowserStack - Google Search/i) != null);
             done();
